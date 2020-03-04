@@ -7,10 +7,13 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "seed": "node ./server/seedFakeData.js",
-    "server": "node ./server/main.js"
+    "server": "node ./server/main.js",
+    "setup": "yarn install && yarn seed"
   },
   "dependencies": {
+    "apollo-server": "^2.11.0",
     "core-js": "^3.6.4",
+    "faker": "^4.1.0",
     "vue": "^2.6.11",
     "vue-router": "^3.1.5",
     "vuetify": "^2.2.11"
