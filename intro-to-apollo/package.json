@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "seed": "node ./server/seedFakeData.js"
+    "seed": "node ./server/seedFakeData.js",
+    "server": "node ./server/main.js"
   },
   "dependencies": {
     "core-js": "^3.6.4",
