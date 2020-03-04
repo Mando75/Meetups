@@ -34,14 +34,13 @@ module.exports = gql`
         street: String
         city: String
         state: String
-        zip: Int
+        zip: String
         books: Book
     }
 
     type Query {
         book(id: ID!): Book
-        booksByAuthor(authorId: ID!): [Book]
-        booksByPublisher(publisherId: ID!): [Book]
+        books: [Book]
         author(id: ID!): Author
         publisher(id: ID!): Publisher
     }
