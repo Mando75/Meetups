@@ -14,75 +14,38 @@
 
 <script>
   import BookCard from '@/components/BookCard'
+  import gql from 'graphql-tag'
 
   export default {
     name: 'BookList',
     components: { BookCard },
-    data () {
-      return {
-        books: [{
-          id: 0, title: 'Hardcoded',
-          subtitle: 'We are going to change this',
-          summary: 'This is a summary for a non existent book Lorem ipsum This is a summary for a non existent book Lorem ipsumThis is a summary for a non existent book Lorem ipsumThis is a summary for a non existent book Lorem ipsumThis is a summary for a non existent book Lorem ipsumThis is a summary for a non existent book Lorem ipsum',
-          numPages: 19,
-          publisher: {
-            id: 0,
-            name: 'My Book Publisher',
-            street: '123 Sesame St',
-            city: 'New York',
-            state: 'NY',
-            zip: 12345
-          },
-          author: {
-            id: 0,
-            firstName: 'Bob',
-            lastName: 'Author',
-            email: 'bob@author.com'
-          },
-          reviews: []
-        },
-          {
-            id: 1, title: 'Hardcoded',
-            subtitle: 'We are going to change this',
-            summary: 'This is a summary for a non existent book Lorem ipsum This is a summary for a non existent book Lorem ipsumThis is a summary for a non existent book Lorem ipsumThis is a summary for a non existent book Lorem ipsumThis is a summary for a non existent book Lorem ipsumThis is a summary for a non existent book Lorem ipsum',
-            numPages: 19,
-            publisher: {
-              id: 0,
-              name: 'My Book Publisher',
-              street: '123 Sesame St',
-              city: 'New York',
-              state: 'NY',
-              zip: 12345
-            },
-            author: {
-              id: 0,
-              firstName: 'Bob',
-              lastName: 'Author',
-              email: 'bob@author.com'
-            },
-            reviews: []
-          },
-          {
-            id: 2, title: 'Hardcoded',
-            subtitle: 'We are going to change this',
-            summary: 'This is a summary for a non existent book Lorem ipsum This is a summary for a non existent book Lorem ipsumThis is a summary for a non existent book Lorem ipsumThis is a summary for a non existent book Lorem ipsumThis is a summary for a non existent book Lorem ipsumThis is a summary for a non existent book Lorem ipsum',
-            numPages: 19,
-            publisher: {
-              id: 0,
-              name: 'My Book Publisher',
-              street: '123 Sesame St',
-              city: 'New York',
-              state: 'NY',
-              zip: 12345
-            },
-            author: {
-              id: 0,
-              firstName: 'Bob',
-              lastName: 'Author',
-              email: 'bob@author.com'
-            }
-          }
-        ]
+    apollo: {
+      books: {
+        query: gql`
+         query getBooks {
+           books {
+             id
+             title
+             subtitle
+             summary
+             numPages
+             publisher {
+               id
+               name
+               street
+               city
+               state
+               zip
+             }
+             author {
+               id
+               firstName
+               lastName
+               email
+             }
+           }
+         }
+        `
       }
     }
   }

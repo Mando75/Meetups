@@ -21,7 +21,7 @@
           <v-row>
             <v-rating v-model="rating" half-increments hover />
             <v-spacer />
-            <v-btn dark color="blue" @click="addReview">Submit</v-btn>
+            <v-btn dark color="blue" :loading="!!addingReview" @click="addReview">Submit</v-btn>
           </v-row>
         </v-form>
       </v-card-text>
@@ -30,12 +30,17 @@
 </template>
 
 <script>
+  import gql from 'graphql-tag'
   export default {
     name: 'AddReviewDialog',
     props: {
       value: {
         type: Boolean,
         default: false
+      },
+      bookId: {
+        type: String,
+        default: ''
       }
     },
     data () {
@@ -44,12 +49,38 @@
         title: '',
         name: '',
         rating: 0,
-        text: ''
+        text: '',
+        addingReview: 0
       }
     },
     methods: {
       addReview() {
-        this.show = false
+        this.$apollo.mutate({
+          mutation: gql`
+            mutation addReview($review: NewReview!) {
+               addReview(review: $review) {
+                 id
+               }
+            }
+          `,
+          loadingKey: 'addingReview',
+          variables: {
+            review: {
+              bookId: this.bookId,
+              title: this.title,
+              reviewerName: this.name,
+              rating: this.rating,
+              reviewText: this.text
+            }
+          }
+        }).then(({errors}) => {
+          if (errors) {
+            alert('There were errors')
+          }
+        }).catch(err => alert(err))
+          .finally(() => {
+          this.show = false
+        })
       }
     },
     watch: {
