@@ -1,24 +1,21 @@
 # intro-to-apollo
 
+A demo project showing how to setup a new Vue Apollo project.
+
+Completed project is on the implemented branch
+
 ## Project setup
 ```
-yarn install
+yarn setup
 ```
 
-### Compiles and hot-reloads for development
+### Start Server
+```
+yarn server
+```
+
+### Start Vue App
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
