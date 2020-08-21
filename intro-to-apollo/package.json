@@ -11,7 +11,7 @@
     "setup": "yarn install && yarn seed"
   },
   "dependencies": {
-    "apollo-server": "^2.11.0",
+    "apollo-server": "^2.14.2",
     "core-js": "^3.6.4",
     "faker": "^4.1.0",
     "vue": "^2.6.11",
